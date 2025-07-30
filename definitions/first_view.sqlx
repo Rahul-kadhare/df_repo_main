@@ -1,0 +1,7 @@
+config {
+  type: "view",
+  schema: "test_dataset"
+}
+
+SELECT "test" as name,
+      "test 2" as name2
