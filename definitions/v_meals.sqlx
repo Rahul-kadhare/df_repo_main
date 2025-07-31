@@ -2,6 +2,7 @@ config {
     type: "view",
     schema: "test_dataset",
 }
+
 SELECT
   DISTINCT meal_id,
   meal_name,
