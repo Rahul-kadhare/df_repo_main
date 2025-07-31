@@ -1,6 +1,7 @@
 config {
     type: "view",
-    schema: "test_dataset"
+    schema: "test_dataset",
+    materialized: true
 }
 SELECT
   DISTINCT meal_id,
