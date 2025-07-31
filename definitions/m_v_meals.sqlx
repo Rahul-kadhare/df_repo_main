@@ -1,0 +1,17 @@
+config {
+    type: "view",
+    schema: "test_dataset",
+    materialized: true
+}
+SELECT
+  DISTINCT meal_id,
+  meal_name,
+  meal_type,
+  calories,
+  date,
+  price,
+  drink_id
+FROM
+  ${ref("meals")}
+ORDER BY
+  meal_id
