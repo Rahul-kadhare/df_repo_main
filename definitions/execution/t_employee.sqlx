@@ -1,0 +1,36 @@
+config {
+    type: "table",
+    schema: "test_dataset" + dataform.projectConfig.vars.published_dataset_suffix,
+    name: "t_employees",
+    tags: ["employee table"],
+    description: "Employee with higher salary",
+    columns: {
+        EmployeeID: "Employee ID",
+        FirstName: "First Name",
+        LastName: "Last Name",
+        Email: "Email",
+        DepartmentID: "Dept ID",
+        Salary: "salary",
+        JoinDate: "Company Join date",
+        load_dt: "load Date",
+        createdDate: "date_creation",
+        createdby: "created by",
+        updatedby: "updated by"
+
+    }
+}
+
+SELECT
+  Emp.EmployeeID,
+  Emp.FirstName,
+  Emp.LastName,
+  Emp.Email,
+  Emp.DepartmentID,
+  Emp.Salary,
+  Emp.JoinDate,
+  Emp.load_dt,
+  "2025/07/01" AS createdDate,
+  "Rahul_Kadhare" AS createdby,
+  "Ashok" AS updatedby,
+FROM
+  ${ref("employees")} AS Emp

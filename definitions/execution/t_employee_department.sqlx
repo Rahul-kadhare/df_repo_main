@@ -1,0 +1,31 @@
+config {
+    type: "table",
+    schema: "test_dataset",
+    name: "t_employees_salary_flag",
+    description: "Employees classified as Higher or Lower salary per department",
+    dependencies: ["department", "employees"]
+}
+
+SELECT
+  DISTINCT Emp.EmployeeID,
+  Emp.FirstName,
+  Emp.LastName,
+  Emp.Email,
+  Emp.DepartmentID,
+  Dept.DepartmentName,
+  Emp.Salary,
+  CASE
+    WHEN Emp.Salary > AVG(Emp.Salary) OVER (PARTITION BY Emp.DepartmentID) THEN 'Higher'
+    ELSE 'Lower'
+END
+  AS Salary_Status,
+  CURRENT_TIMESTAMP() AS createdDate,
+  "${dataform.projectConfig.vars.creator_name}" AS createdby,
+  "${dataform.projectConfig.vars.creator_name}" AS updatedby
+FROM
+  ${ref("employees")} AS Emp
+INNER JOIN
+  ${ref("department")} AS Dept
+ON
+  Emp.DepartmentID = Dept.DepartmentID
+ORDER BY  Emp.EmployeeID, Salary_Status 

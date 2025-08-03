@@ -1,0 +1,6 @@
+config {
+    type: "declaration",
+    database: "dentsu-460912",
+    schema: "bronze",
+    name: "employees"
+}

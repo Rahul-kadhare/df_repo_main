@@ -5,3 +5,5 @@ defaultAssertionDataset: dataform_assertions
 dataformCoreVersion: 3.0.0
 vars:
     execution_date: "2025-08-03"
+    creator_name: "Rahul"
+    published_dataset_suffix: ""

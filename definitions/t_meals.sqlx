@@ -1,0 +1,16 @@
+config {
+    type: "table",
+    schema: "test_dataset",
+    name: "t_meals",
+    
+}
+
+SELECT
+  DISTINCT meal_id,
+  meal_name,
+  meal_type,
+  calories
+FROM
+  ${ref("meals")}
+ORDER BY
+  meal_id

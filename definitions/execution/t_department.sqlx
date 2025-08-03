@@ -1,0 +1,19 @@
+config {
+    type: "table",
+    schema: "test_dataset" + dataform.projectConfig.vars.published_dataset_suffix,
+    name: "t_department",
+    tags: ["department table"],
+    description: "department with salary",
+    columns: {
+        DepartmentID: "Dept ID",
+        DepartmentName: "DeptName",
+
+    }
+}
+
+SELECT
+  Dept.DepartmentID,
+  Dept.DepartmentName
+
+FROM
+  ${ref("department")} AS Dept
